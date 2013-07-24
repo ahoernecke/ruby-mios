@@ -45,7 +45,7 @@ module MiOS
 
     def categories
       @devices.values.map { |device|
-        device.category
+        device.try(:category) || "Unspecified category " + device.try(:name).to_s
       }.uniq.sort
     end
 
