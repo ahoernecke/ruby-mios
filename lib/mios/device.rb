@@ -67,6 +67,7 @@ module MiOS
       @states.map { |state|
         state['service'].split(":").last
       }.uniq.each { |service|
+        service.gsub!(/[^0-9A-Za-z]/, '') 
         if MiOS::Services.const_defined?(service)
           extend MiOS::Services.const_get(service)
         else
